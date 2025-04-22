@@ -34,10 +34,10 @@
 								>About Us</a
 							>
 							<ul>
-								<li><a href="#">Ann Jordan</a></li>
-								<li><a href="#">Mary Coleman</a></li>
-								<li><a href="#">Mary Mallone</a></li>
-								<li><a href="#">Marie Scully</a></li>
+								<li><a href="#AnnJordan">Ann Jordan</a></li>
+								<li><a href="#MaryColeman">Mary Coleman</a></li>
+								<li><a href="#MaryMallone">Mary Mallone</a></li>
+								<li><a href="#MarieScully">Marie Scully</a></li>
 								<!-- <li>
 									<a href="#">Submenu</a>
 									<ul>
@@ -574,13 +574,12 @@
 			}
 		</script>
 		<script>
-			window.addEventListener("DOMContentLoaded", () => {
+			function handleHashTabLoad() {
 				const hash = window.location.hash;
 				if (hash) {
-					const tabId = hash.substring(1); // e.g. "MarieScully"
+					const tabId = hash.substring(1); // e.g., "MarieScully"
 
 					setTimeout(() => {
-						// Trigger the button for the matching profile
 						const matchingButtons = Array.from(
 							document.querySelectorAll(".button.team")
 						).filter((btn) => btn.getAttribute("onclick")?.includes(tabId));
@@ -588,21 +587,27 @@
 						if (matchingButtons.length > 0) {
 							const button = matchingButtons[0];
 
-							// Simulate the tab click
 							showTab(
 								{ preventDefault: () => {}, currentTarget: button },
 								tabId
 							);
 
-							// Scroll to the 'start' anchor instead of the actual profile section
 							const scrollTarget = document.getElementById("start");
 							if (scrollTarget) {
-								scrollTarget.scrollIntoView({ behavior: "smooth" });
+								scrollTarget.scrollIntoView({
+									behavior: "smooth",
+									block: "start",
+								});
 							}
 						}
 					}, 100);
 				}
-			});
+			}
+
+			window.addEventListener("DOMContentLoaded", handleHashTabLoad);
+
+			// 🔁 Also respond when hash changes on the same page
+			window.addEventListener("hashchange", handleHashTabLoad);
 		</script>
 	</body>
 </html>

@@ -131,8 +131,13 @@
 						<li>Works with adults over the age of 18.</li>
 						<li>Is fully insured.</li>
 					</ul>
+					<br />
 
-					<hr class="major" />
+					<hr
+						class="major"
+						id="start"
+					/>
+					<br />
 
 					<div class="testimonial-tabs">
 						<div class="tab-buttons">
@@ -271,7 +276,7 @@
 										<ul class="actions cta">
 											<li>
 												<a
-													href="#contact"
+													href="contact.html"
 													class="button primary"
 													>Contact Ann</a
 												>
@@ -345,7 +350,7 @@
 										<ul class="actions cta">
 											<li>
 												<a
-													href="#contact"
+													href="contact.html"
 													class="button primary"
 													>Contact Mary</a
 												>
@@ -406,7 +411,7 @@
 										<ul class="actions cta">
 											<li>
 												<a
-													href="#contact"
+													href="contact.html"
 													class="button primary"
 													>Contact Mary</a
 												>
@@ -461,7 +466,7 @@
 										<ul class="actions cta">
 											<li>
 												<a
-													href="#contact"
+													href="contact.html"
 													class="button primary"
 													>Contact Marie</a
 												>
@@ -567,6 +572,37 @@
 					clickedImage.classList.remove("notactive");
 				}
 			}
+		</script>
+		<script>
+			window.addEventListener("DOMContentLoaded", () => {
+				const hash = window.location.hash;
+				if (hash) {
+					const tabId = hash.substring(1); // e.g. "MarieScully"
+
+					setTimeout(() => {
+						// Trigger the button for the matching profile
+						const matchingButtons = Array.from(
+							document.querySelectorAll(".button.team")
+						).filter((btn) => btn.getAttribute("onclick")?.includes(tabId));
+
+						if (matchingButtons.length > 0) {
+							const button = matchingButtons[0];
+
+							// Simulate the tab click
+							showTab(
+								{ preventDefault: () => {}, currentTarget: button },
+								tabId
+							);
+
+							// Scroll to the 'start' anchor instead of the actual profile section
+							const scrollTarget = document.getElementById("start");
+							if (scrollTarget) {
+								scrollTarget.scrollIntoView({ behavior: "smooth" });
+							}
+						}
+					}, 100);
+				}
+			});
 		</script>
 	</body>
 </html>

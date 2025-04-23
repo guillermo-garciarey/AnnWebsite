@@ -5083,6 +5083,13 @@ blockquote {
 	border-radius: none !important;
 }
 
+@media screen and (max-width: 736px) {
+	.accordion-header {
+		text-align: center;
+		margin-left: 0;
+	}
+}
+
 .accordion-header:hover {
 }
 
@@ -5115,7 +5122,7 @@ blockquote {
 	align-items: center; /* Centers children vertically */
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 820px) {
 	.resourcesbox {
 		flex-direction: column;
 	}

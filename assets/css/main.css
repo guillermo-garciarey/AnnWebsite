@@ -1,11 +1,15 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Raleway:800|Source+Sans+Pro:300,300i,600,600i");
 
-/*
-	Relativity by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
-*/
+:root {
+	--green1: #8a9a5b;
+
+	--green2: #a7c4a0;
+	--green3: #5c7354;
+
+	--font-playfair: "Playfair Display", serif;
+	--font-lora: "Lora", serif;
+}
 
 html,
 body,

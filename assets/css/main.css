@@ -4911,46 +4911,12 @@ body.is-navPanel-visible #navPanel {
 .tab-buttons {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+
 	flex-direction: row;
-	/* gap: 1em; */
+	gap: 1em;
 	justify-self: center;
 	/* justify-content: space-between; */
 	width: 100%;
-}
-
-@media screen and (max-width: 1280px) {
-	.tab-buttons {
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		justify-self: center;
-		text-align: center;
-
-		border-radius: none !important;
-	}
-
-	.tab-button {
-		display: flex !important;
-	}
-
-	.testimonial-tabs {
-		width: 100%;
-		margin: auto;
-		display: flex;
-		flex-direction: column;
-		gap: 5em;
-		align-items: center;
-	}
-
-	.tab-button.active {
-		/* background-color: var(--green2); */
-		text-decoration-color: var(--green2) !important;
-		text-decoration: none !important;
-		text-decoration-thickness: 2px;
-		text-underline-offset: 0em;
-		color: var(--green2) !important;
-	}
 }
 
 .tab-button {
@@ -4992,6 +4958,17 @@ body.is-navPanel-visible #navPanel {
 	color: var(--green1) !important;
 }
 
+.profile-card {
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+	width: 90%;
+}
+
 .tab-panel {
 	display: none;
 }
@@ -5023,6 +5000,66 @@ blockquote {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+}
+
+@media screen and (max-width: 1280px) {
+	.tab-buttons {
+		display: flex;
+		flex-direction: row;
+		align-items: start;
+		justify-self: center;
+		text-align: center;
+		gap: 2rem;
+		border-radius: none !important;
+		overflow-x: scroll;
+		scroll-snap-type: x mandatory;
+		overflow-x: scroll;
+		/* justify-content: flex-start; */
+		scroll-behavior: smooth;
+	}
+
+	.tab-button {
+		display: flex !important;
+	}
+
+	.tab-content {
+		padding: 0 !important;
+		margin-top: 1rem;
+	}
+
+	.testimonial-tabs {
+		width: 100%;
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.profile-card {
+		scroll-snap-align: start;
+		padding: 1rem 0;
+	}
+
+	.tab-button.active {
+		/* background-color: var(--green2); */
+		text-decoration-color: var(--green2) !important;
+		text-decoration: none !important;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0em;
+		color: var(--green2) !important;
+	}
+}
+
+/* Faces */
+
+.profile-faces {
+	width: 180px;
+	margin-left: 1rem;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+	aspect-ratio: 1/1;
+	margin-bottom: 1rem;
 }
 
 /* Faces Inactive */
@@ -5134,4 +5171,78 @@ blockquote {
 .resourcesbutton h4 {
 	margin: 0 !important;
 	color: #ffffff;
+}
+
+/* Team Accordion */
+
+.team-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2rem;
+	width: 100%;
+}
+
+.team-member {
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+	position: relative;
+}
+
+.team-member img {
+	width: 10rem;
+
+	object-fit: cover;
+	border-radius: 50%;
+	aspect-ratio: 1/1;
+
+	transition: transform 0.3s;
+}
+
+.team-member:hover img {
+}
+
+.chevron {
+	display: block;
+	margin-top: 0.5rem;
+	font-size: 1.2rem;
+	color: #777;
+}
+
+.info-panel {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.4s ease, opacity 0.4s ease;
+	opacity: 0;
+	margin-top: 0.5rem;
+	background-color: transparent;
+	border-radius: 4px;
+	padding: 0 1rem;
+}
+
+.team-member.active .info-panel {
+	max-height: 100%;
+	opacity: 1;
+	padding: 1rem;
+}
+
+@media screen and (max-width: 736px) {
+	.testimonial-tabs {
+		display: none;
+	}
+
+	.team-container {
+		display: flex;
+	}
+}
+
+@media screen and (min-width: 737px) {
+	.testimonial-tabs {
+		display: flex;
+	}
+
+	.team-container {
+		display: none;
+	}
 }

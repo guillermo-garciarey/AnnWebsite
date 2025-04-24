@@ -5411,3 +5411,24 @@ blockquote {
 .btn-whatsapp > span {
 	background: #25d366;
 }
+
+/* Something else */
+
+/* .tab-panel strong {
+	text-align: center;
+	display: block;
+}
+
+.tab-panel p {
+	display: inline-block;
+	text-align: justify;
+	text-align-last: center;
+	max-width: 100%;
+} */
+
+.location {
+	display: flex;
+
+	justify-content: center;
+	gap: 2rem;
+}

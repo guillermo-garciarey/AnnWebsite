@@ -3456,7 +3456,7 @@ table.alt tbody tr td {
 	height: 0.25rem;
 	margin: 0 0 1.5rem 0;
 	border-radius: 4px;
-	background-color: #e56f44;
+	background-color: transparent;
 }
 
 #wrapper > .main > .inner {

@@ -126,6 +126,7 @@ ul {
 blockquote,
 q {
 	quotes: none;
+	font-size: 1.75rem;
 }
 
 blockquote:before,
@@ -230,6 +231,9 @@ html {
 @media screen and (max-width: 736px) {
 	html {
 		font-size: 11pt;
+	}
+	q {
+		font-size: 1.25rem !important;
 	}
 }
 
@@ -3446,7 +3450,7 @@ table.alt tbody tr td {
 	width: 100%;
 	max-width: 35rem;
 	text-align: center;
-	margin: 0 auto 3rem auto;
+	margin: 0 auto 0 auto;
 }
 
 #wrapper > .main > header:before {
@@ -3472,7 +3476,7 @@ table.alt tbody tr td {
 
 #wrapper > .main > .inner.style2 {
 	padding: 5rem 4rem 3rem 4rem;
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
 	border-radius: 4px;
 }
 
@@ -3966,7 +3970,7 @@ table.alt tbody tr td {
 
 @media screen and (max-width: 736px) {
 	#wrapper > .main {
-		padding: 4rem 2rem 2rem 2rem;
+		padding: 2rem 2rem 2rem 2rem;
 	}
 
 	#wrapper > .main > .inner.style2 {
@@ -4066,7 +4070,8 @@ body {
 	width: 100%;
 	height: 3.25rem;
 	line-height: 3.25rem;
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
+	background-color: #ececec;
 	box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.125);
 	cursor: default;
 	z-index: 10000;
@@ -4389,7 +4394,7 @@ body {
 	/* background-attachment: fixed; */
 	background-position: 50% 70%;
 	background-repeat: no-repeat;
-	min-height: 70vh;
+	height: 70vh !important;
 	padding: 8rem 0;
 	overflow: hidden;
 	position: relative;

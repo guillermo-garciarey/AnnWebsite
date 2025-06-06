@@ -207,14 +207,15 @@
 							<img
 								src="images/profile2.webp"
 								alt="Mary Coleman"
+								data-target="#modalMaryColeman"
 							/>
 							<h4>Mary Coleman</h4>
-							<button
+							<!-- <button
 								class="button alt team fit small"
-								data-target="#modalMaryColeman"
+								
 							>
 								Learn More
-							</button>
+							</button> -->
 
 							<!-- Modal -->
 							<div
@@ -299,14 +300,15 @@
 							<img
 								src="images/profile3.jpg"
 								alt="Mary Malone"
+								data-target="#modalMaryMalone"
 							/>
 							<h4>Mary Malone</h4>
-							<button
+							<!-- <button
 								class="button alt team fit small"
-								data-target="#modalMaryMalone"
+								
 							>
 								Learn More
-							</button>
+							</button> -->
 
 							<!-- Modal -->
 							<div
@@ -403,14 +405,15 @@
 							<img
 								src="images/MarieScully.png"
 								alt="Marie Scully"
+								data-target="#modalMarieScully"
 							/>
 							<h4>Marie Scully</h4>
-							<button
+							<!-- <button
 								class="button alt team fit small"
-								data-target="#modalMarieScully"
+								
 							>
 								Learn More
-							</button>
+							</button> -->
 
 							<!-- Modal -->
 							<div
@@ -571,42 +574,17 @@
 
 			<!-- Footer -->
 			<footer id="footer">
-				<ul class="icons">
-					<li>
-						<a
-							href="#"
-							class="icon brands alt fa-twitter"
-							><span class="label">Twitter</span></a
-						>
-					</li>
-					<li>
-						<a
-							href="#"
-							class="icon brands alt fa-facebook-f"
-							><span class="label">Facebook</span></a
-						>
-					</li>
-					<li>
-						<a
-							href="#"
-							class="icon brands alt fa-instagram"
-							><span class="label">Instagram</span></a
-						>
-					</li>
-					<li>
-						<a
-							href="#"
-							class="icon brands alt fa-github"
-							><span class="label">GitHub</span></a
-						>
-					</li>
-					<li>
-						<a
-							href="#"
-							class="icon solid alt fa-phone"
-							><span class="label">Phone</span></a
-						>
-					</li>
+				<div class="logos">
+					<img
+						src="/images/cflogo.png"
+						alt=""
+					/>
+					<img
+						src="/images/iahiplogo.png"
+						alt=""
+					/>
+				</div>
+				<!-- <ul class="icons">
 					<li>
 						<a
 							href="#"
@@ -614,7 +592,7 @@
 							><span class="label">Email</span></a
 						>
 					</li>
-				</ul>
+				</ul> -->
 				<p class="copyright">&copy; Untitled. All rights reserved.</p>
 			</footer>
 		</div>
@@ -630,8 +608,8 @@
 		<script src="assets/js/main.js"></script>
 
 		<script>
-			document.querySelectorAll(".button[data-target]").forEach((button) => {
-				button.addEventListener("click", function () {
+			document.querySelectorAll("img[data-target]").forEach((img) => {
+				img.addEventListener("click", function () {
 					const modalId = this.getAttribute("data-target");
 					const modal = document.querySelector(modalId);
 

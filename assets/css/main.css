@@ -2730,7 +2730,7 @@ input[type="radio"]:focus + label:before {
 	-ms-object-fit: cover;
 	object-fit: cover;
 	display: block;
-	position: absolute;
+	/* position: absolute; */
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -2868,8 +2868,9 @@ input[type="radio"]:focus + label:before {
 
 .image.main {
 	display: block;
-	margin: 0 0 3rem 0;
+	/* margin: 0 0 3rem 0; */
 	width: 100%;
+	height: 25vh;
 }
 
 .image.main img {
@@ -3944,7 +3945,8 @@ table.alt tbody tr td {
 
 @media screen and (max-width: 1280px) {
 	#wrapper > .main {
-		padding: 6rem 3rem 4rem 3rem;
+		/* padding: 6rem 3rem 4rem 3rem; */
+		padding: 0;
 	}
 
 	#wrapper > .main > .inner.style2 > .image.main:first-child {

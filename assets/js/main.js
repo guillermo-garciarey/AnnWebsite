@@ -149,22 +149,7 @@ function updateCarousel() {
 }
 
 // Optional: swipe support
-// let startX = 0;
-
-// wrapper.addEventListener("touchstart", (e) => {
-// 	startX = e.touches[0].clientX;
-// });
-
-// wrapper.addEventListener("touchend", (e) => {
-// 	const endX = e.changedTouches[0].clientX;
-// 	if (startX - endX > 50 && currentSlide < slides.length - 1) {
-// 		currentSlide++;
-// 		updateCarousel();
-// 	} else if (endX - startX > 50 && currentSlide > 0) {
-// 		currentSlide--;
-// 		updateCarousel();
-// 	}
-// });
+//
 
 // Wait for the DOM to be loaded
 

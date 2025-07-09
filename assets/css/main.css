@@ -4816,10 +4816,10 @@ body.is-navPanel-visible #navPanel {
 }
 
 .box {
-	padding: 3em 3em 1em 3em;
+	/* padding: 3em 3em 1em 3em; */
 	border-radius: 4px;
 	text-align: center;
-	background-color: #ffffff !important;
+	background-color: #ffffff;
 
 	margin: 1em 1em 1em 1em;
 
@@ -5668,4 +5668,64 @@ blockquote {
 
 .contact-box > .contact-item > p {
 	margin: 0 !important;
+}
+
+.resources-boxes {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	padding: 10px;
+}
+
+.resources-boxes > .box {
+	padding: none !important;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: none !important;
+	height: 250px;
+}
+
+.box > p {
+	margin: 0 !important;
+}
+
+.color1 {
+	background-color: #5c7354;
+}
+
+.color2 {
+	background-color: #61c3d0;
+}
+
+.color3 {
+	background-color: #e4956d;
+}
+
+.color4 {
+	background-color: #c88dca;
+}
+
+.color5 {
+	background-color: #906974;
+}
+
+.color6 {
+	background-color: #98ba8c;
+}
+
+@media screen and (max-width: 736px) {
+	.resources-boxes {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 1rem;
+		padding: 10px;
+	}
+	.box {
+		width: 90% !important;
+	}
 }

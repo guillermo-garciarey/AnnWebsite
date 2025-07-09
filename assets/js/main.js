@@ -149,19 +149,93 @@ function updateCarousel() {
 }
 
 // Optional: swipe support
-let startX = 0;
+// let startX = 0;
 
-wrapper.addEventListener("touchstart", (e) => {
-	startX = e.touches[0].clientX;
-});
+// wrapper.addEventListener("touchstart", (e) => {
+// 	startX = e.touches[0].clientX;
+// });
 
-wrapper.addEventListener("touchend", (e) => {
-	const endX = e.changedTouches[0].clientX;
-	if (startX - endX > 50 && currentSlide < slides.length - 1) {
-		currentSlide++;
-		updateCarousel();
-	} else if (endX - startX > 50 && currentSlide > 0) {
-		currentSlide--;
-		updateCarousel();
+// wrapper.addEventListener("touchend", (e) => {
+// 	const endX = e.changedTouches[0].clientX;
+// 	if (startX - endX > 50 && currentSlide < slides.length - 1) {
+// 		currentSlide++;
+// 		updateCarousel();
+// 	} else if (endX - startX > 50 && currentSlide > 0) {
+// 		currentSlide--;
+// 		updateCarousel();
+// 	}
+// });
+
+// Wait for the DOM to be loaded
+
+// This function shows the correct tab based on the tab ID
+// function showTab(tab) {
+// 	console.log("Tab function called for: ", tab);
+// 	document
+// 		.querySelectorAll(".tab-panel")
+// 		.forEach((panel) => panel.classList.remove("active"));
+// 	document
+// 		.querySelectorAll(".tab-button")
+// 		.forEach((button) => button.classList.remove("active"));
+
+// 	const tabPanel = document.getElementById(tab);
+// 	if (tabPanel) {
+// 		tabPanel.classList.add("active");
+// 	}
+
+// 	const tabButton = document.querySelector(`[onclick="showTab('${tab}')"]`);
+// 	if (tabButton) {
+// 		tabButton.classList.add("active");
+// 	}
+// }
+
+// const urlParams = new URLSearchParams(window.location.search);
+// const tab = urlParams.get("tab");
+// if (tab) {
+// 	showTab(tab);
+// } else {
+// 	showTab("OurApproach");
+// }
+
+function showTab(tab) {
+	console.log("showTab function called with tab: ", tab); // Debugging log for the tab parameter
+	// Remove active class from all panels and buttons
+	document
+		.querySelectorAll(".tab-panel")
+		.forEach((panel) => panel.classList.remove("active"));
+	document
+		.querySelectorAll(".tab-button")
+		.forEach((button) => button.classList.remove("active"));
+
+	// Add active class to the selected tab panel and button
+	const tabPanel = document.getElementById(tab);
+	if (tabPanel) {
+		console.log(`Displaying tab: ${tab}`); // Debugging log when a tab is displayed
+		tabPanel.classList.add("active");
+	} else {
+		console.error(`No tab found with id: ${tab}`); // Debugging log if tab not found
+	}
+
+	const tabButton = document.querySelector(`[onclick="showTab('${tab}')"]`);
+	if (tabButton) {
+		console.log(`Activating button for tab: ${tab}`); // Debugging log when button is activated
+		tabButton.classList.add("active");
+	} else {
+		console.error(`No button found for tab: ${tab}`); // Debugging log if button not found
+	}
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+	// Check the URL for the 'tab' query parameter and display the tab
+	const urlParams = new URLSearchParams(window.location.search);
+	const tab = urlParams.get("tab");
+	console.log("Tab parameter in URL: ", tab); // Debugging log to show the tab parameter from URL
+
+	if (tab) {
+		console.log(`Navigating to tab: ${tab}`); // Debugging log when a tab is set from URL
+		showTab(tab); // Open the tab corresponding to the URL query parameter
+	} else {
+		console.log("No tab parameter found, defaulting to 'OurApproach' tab."); // Debugging log for default
+		showTab("OurApproach"); // Default to "Our Approach" tab if no query parameter is specified
 	}
 });

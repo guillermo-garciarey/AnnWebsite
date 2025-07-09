@@ -5030,7 +5030,6 @@ blockquote {
 		align-items: start;
 		justify-self: center;
 		text-align: center;
-		gap: 2rem;
 		border-radius: none !important;
 		/* overflow-x: scroll;
 		scroll-snap-type: x mandatory;
@@ -5470,7 +5469,6 @@ h2 {
 	margin: auto;
 	display: flex;
 	flex-direction: column;
-	gap: 2em;
 }
 .tab-buttons {
 	display: flex;
@@ -5503,7 +5501,6 @@ h2 {
 		margin: auto;
 		display: flex;
 		flex-direction: column;
-		gap: 2em;
 		align-items: center;
 	}
 
@@ -5628,16 +5625,47 @@ blockquote {
 	width: 300px;
 }
 
-.color_container1 {
-	background-color: #777;
-	position: relative;
-	left: 50%;
-	right: 50%;
-	margin-left: -50vw;
-	margin-right: -50vw;
-	width: 100vw;
+.bg1 {
+	background-color: #5c7354 !important;
+	background-image: none !important;
 }
 
-.color_container1 {
-	background-color: #5c7354;
+.bg2 {
+	background-color: #769184 !important;
+	background-image: none !important;
+}
+
+.bg3 {
+	background-color: #7a998a !important;
+	background-image: none !important;
+}
+
+.contact-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: var(--green3);
+	justify-self: center;
+}
+
+.contact-item {
+	display: flex; /* Make each item a horizontal flex container */
+	gap: 8px; /* Space between the icon and text */
+	justify-content: flex-start; /* Ensure that content is aligned left in each container */
+}
+
+.contact-box > .contact-item > i {
+	display: flex; /* Makes the <i> a flex container */
+	align-items: center; /* Vertically centers the content inside the <i> */
+	justify-content: center; /* Horizontally centers the content inside the <i> */
+	/* border: solid 1px var(--green3); */
+	border-radius: 50%;
+	padding: 4px;
+	height: 30px;
+	width: 30px;
+	text-align: center;
+}
+
+.contact-box > .contact-item > p {
+	margin: 0 !important;
 }

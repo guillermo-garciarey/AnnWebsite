@@ -63,9 +63,19 @@
 							>
 
 							<ul>
-								<li><a href="services.html">Our Therapeutic Approach</a></li>
-								<li><a href="services.html">Issues We Work With</a></li>
-								<li><a href="services.html">Our Therapeutic Methods </a></li>
+								<li>
+									<a href="services.html?tab=OurApproach">Our Approach</a>
+								</li>
+								<li>
+									<a href="services.html?tab=IssuesWeWorkWith"
+										>Issues We Work With</a
+									>
+								</li>
+								<li>
+									<a href="services.html?tab=TypesOfTherapy"
+										>Types Of Therapy</a
+									>
+								</li>
 							</ul>
 						</li>
 
@@ -95,20 +105,20 @@
 						<div class="tab-buttons">
 							<button
 								class="tab-button active"
-								onclick="showTab('Our Approach')"
+								onclick="showTab('OurApproach')"
 							>
 								Our Approach
 							</button>
 							<button
 								class="tab-button"
-								onclick="showTab('Issues We Work With')"
+								onclick="showTab('IssuesWeWorkWith')"
 							>
 								Issues We Work With
 							</button>
 
 							<button
 								class="tab-button"
-								onclick="showTab('Types Of Therapy')"
+								onclick="showTab('TypesOfTherapy')"
 							>
 								Types Of Therapy
 							</button>
@@ -116,8 +126,8 @@
 
 						<div class="tab-content">
 							<section
-								id="Our Approach"
-								class="tab-panel active"
+								id="OurApproach"
+								class="tab-panel"
 							>
 								<div class="inner">
 									<div class="content">
@@ -136,7 +146,7 @@
 										</p>
 
 										<p class="sub-subtitle">
-											We aim to offer confidential spaces where you can:
+											We offer confidential spaces where you can:
 										</p>
 
 										<ul>
@@ -165,7 +175,7 @@
 							</section>
 
 							<section
-								id="Issues We Work With"
+								id="IssuesWeWorkWith"
 								class="tab-panel"
 							>
 								<div class="inner">
@@ -293,7 +303,7 @@
 								</div>
 							</section>
 							<section
-								id="Types Of Therapy"
+								id="TypesOfTherapy"
 								class="tab-panel"
 							>
 								<div class="inner">
@@ -410,21 +420,6 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
-		<script>
-			function showTab(tab) {
-				document
-					.querySelectorAll(".tab-panel")
-					.forEach((panel) => panel.classList.remove("active"));
-				document
-					.querySelectorAll(".tab-button")
-					.forEach((button) => button.classList.remove("active"));
-
-				document.getElementById(tab).classList.add("active");
-				document
-					.querySelector(`[onclick="showTab('${tab}')"]`)
-					.classList.add("active");
-			}
-		</script>
 		<script>
 			// Open modal when clicking on a link
 			document.querySelectorAll(".learn-more[data-target]").forEach((link) => {

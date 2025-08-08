@@ -9,9 +9,22 @@
 
 	--font-playfair: "Playfair Display", serif;
 	--font-lora: "Lora", serif;
+
+	--main-yellow: #feba17;
+	--footer-color: #ffefc8;
 }
 
 p {
+	font-size: 1.1em !important;
+	color: #292f33 !important;
+}
+
+li {
+	font-size: 1.1em !important;
+	color: #292f33 !important;
+}
+
+dl dd {
 	font-size: 1.1em !important;
 	color: #292f33 !important;
 }
@@ -199,7 +212,8 @@ html {
 }
 
 body {
-	background-color: #3f3f3f !important;
+	/* background-color: #3f3f3f !important; */
+	background-color: #feba17 !important;
 }
 
 body.is-preload *,
@@ -375,6 +389,9 @@ h6 {
 	}
 
 	h4 {
+		font-size: 0.9rem;
+	}
+	.tab-button {
 		font-size: 0.9rem;
 	}
 
@@ -3943,10 +3960,11 @@ table.alt tbody tr td {
 }
 
 #wrapper > .main.alt {
-	background-image: url("../../images/bg.jpg");
+	/* background-image: url("../../images/bg.jpg"); */
 	background-size: cover;
 	background-repeat: repeat;
 	background-attachment: fixed;
+	background-color: var(--footer-color);
 }
 
 @media screen and (max-width: 1280px) {
@@ -4081,7 +4099,7 @@ body {
 	height: 3.25rem;
 	line-height: 3.25rem;
 	/* background-color: #ffffff; */
-	background-color: #ececec;
+	background-color: var(--footer-color);
 	box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.125);
 	cursor: default;
 	z-index: 10000;
@@ -4092,6 +4110,7 @@ body {
 	height: inherit;
 	line-height: inherit;
 	border-bottom: 0;
+	color: var(--main-yellow) !important;
 }
 
 #header > .logo {
@@ -4109,6 +4128,7 @@ body {
 #header > nav {
 	position: absolute;
 	right: 0;
+	display: none;
 }
 
 #header > nav > ul {
@@ -4151,7 +4171,7 @@ body {
 	left: -0.25rem;
 	width: calc(100% + 0.5rem);
 	height: 0.25rem;
-	background-color: var(--green1);
+	background-color: var(--main-yellow);
 	border-radius: 4px;
 }
 
@@ -4314,7 +4334,7 @@ body {
 	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
 		top 0.2s ease-in-out, right 0.2s ease-in-out;
 	text-decoration: none;
-	display: none;
+	display: block;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -4399,15 +4419,15 @@ body {
 	-moz-justify-content: center;
 	-webkit-justify-content: center;
 	-ms-justify-content: center;
-	justify-content: center;
-	background-image: url("../../images/preview.jpg");
+	justify-content: space-between;
+	background-image: url("../../images/banner.webp");
 	background-size: cover;
 	/* background-attachment: fixed; */
 	background-position: 50% 70%;
 	background-repeat: no-repeat;
 	height: 70vh !important;
 	height: 100vh !important;
-	padding: 8rem 0;
+	padding: 2rem 0 8rem 0;
 	overflow: hidden;
 	position: relative;
 }
@@ -4415,6 +4435,7 @@ body {
 #banner > .content {
 	background-color: var(--green1);
 	color: #ffffff;
+	color: #feba17;
 	-moz-transition: -moz-transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 	-webkit-transition: -webkit-transform 0.5s ease-in-out,
 		opacity 0.5s ease-in-out;
@@ -4427,12 +4448,12 @@ body {
 	z-index: 1;
 	margin-top: 2rem;
 	opacity: 1;
-	background: rgba(0, 0, 0, 0.25);
+	background: transparent;
 	/* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
-	backdrop-filter: blur(4px);
-	-webkit-backdrop-filter: blur(4px);
+	/* backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px); */
 
-	border: 1px solid rgba(255, 255, 255, 0.18);
+	/* border: 1px solid rgba(255, 255, 255, 0.18); */
 }
 
 #banner > .content input,
@@ -4461,6 +4482,7 @@ body {
 #banner > .content h5,
 #banner > .content h6 {
 	color: #ffffff;
+	color: #feba17;
 }
 
 #banner > .content blockquote {
@@ -4500,11 +4522,11 @@ body {
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg zoomAndPan='disable' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='40px' height='20px' viewBox='0 0 40px 20px'%3E%3Cstyle type='text/css'%3Eline %7B stroke: %23ffffff%3B stroke-width: 0.75px%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='20' y2='20' /%3E%3Cline x1='20' y1='20' x2='40' y2='0' /%3E%3C/svg%3E");
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 3rem 1.5rem;
+	background-size: 2rem 1rem;
 	width: 6rem;
 	height: 6rem;
 	text-align: center;
-	color: #ffffff;
+	color: var(--main-yellow);
 	border-bottom: 0;
 	position: absolute;
 	bottom: 0;
@@ -4601,7 +4623,7 @@ body.is-preload #banner:before {
 
 @media screen and (max-width: 480px) {
 	#banner {
-		padding: 12rem 0;
+		padding: 4rem 0;
 		min-height: 0;
 	}
 
@@ -4616,6 +4638,7 @@ body.is-preload #banner:before {
 	padding: 3.5rem 0 1.5rem 0;
 	color: #bfbfbf;
 	text-align: center;
+	background-color: var(--footer-color);
 }
 
 #footer ul.icons {
@@ -4659,7 +4682,7 @@ body.is-preload #banner:before {
 	-ms-transition: -ms-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 	transition: transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 	-webkit-overflow-scrolling: touch;
-	background: var(--green1);
+	background: var(--main-yellow);
 	box-shadow: none;
 	color: #ffffff;
 	height: 100%;
@@ -4775,7 +4798,7 @@ body.is-preload #banner:before {
 body.is-navPanel-visible #wrapper {
 	pointer-events: none;
 	cursor: default;
-	opacity: 0.25;
+	opacity: 1;
 }
 
 body.is-navPanel-visible #navPanel {
@@ -4953,7 +4976,7 @@ body.is-navPanel-visible #navPanel {
 	border: 0;
 	cursor: pointer;
 	display: inline-block;
-	font-size: 0.8em;
+	font-size: 1.1rem;
 	font-weight: normal;
 	height: 4.1em;
 	letter-spacing: 0.25em;
@@ -5189,6 +5212,8 @@ blockquote {
 	color: white;
 	background-color: var(--green1);
 	border: solid 1px var(--green1);
+	background-color: #feba17;
+	border: solid 1px #feba17;
 	border-radius: 4px;
 	padding: 15px;
 	cursor: pointer;
@@ -5295,7 +5320,7 @@ blockquote {
 
 /* Image styling for the team member */
 .team-member img {
-	border: solid 1px var(--green1);
+	border: solid 1px var(--main-yellow);
 	width: 10rem;
 	object-fit: cover;
 	border-radius: 50%;
@@ -5527,7 +5552,7 @@ h2 {
 	border: 0;
 	cursor: pointer;
 	display: inline-block;
-	font-size: 0.8em;
+	font-size: 1.1rem;
 	font-weight: normal;
 	height: 4.1em;
 	letter-spacing: 0.25em;
@@ -5553,7 +5578,7 @@ h2 {
 	text-decoration: underline;
 	text-decoration-thickness: 2px;
 	text-underline-offset: 1em; */
-	color: var(--green2) !important;
+	color: var(--main-yellow) !important;
 }
 
 .tab-panel {
@@ -5608,11 +5633,11 @@ blockquote {
 
 @media screen and (max-width: 480px) {
 	.logos {
-		flex-direction: column-reverse;
+		/* flex-direction: column-reverse; */
 	}
 
 	.logos img {
-		height: 35px;
+		/* height: 35px; */
 	}
 }
 
@@ -5642,10 +5667,10 @@ blockquote {
 
 .contact-box {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
-	color: var(--green3);
+	color: #feba17;
 	justify-self: center;
+	gap: 1rem;
 }
 
 .contact-item {
@@ -5658,12 +5683,14 @@ blockquote {
 	display: flex; /* Makes the <i> a flex container */
 	align-items: center; /* Vertically centers the content inside the <i> */
 	justify-content: center; /* Horizontally centers the content inside the <i> */
-	/* border: solid 1px var(--green3); */
+	border: solid 1px var(--main-yellow);
 	border-radius: 50%;
 	padding: 4px;
 	height: 30px;
 	width: 30px;
 	text-align: center;
+	background-color: var(--main-yellow);
+	color: var(--footer-color);
 }
 
 .contact-box > .contact-item > p {

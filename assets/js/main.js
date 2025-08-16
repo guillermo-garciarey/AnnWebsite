@@ -224,3 +224,128 @@ document.addEventListener("DOMContentLoaded", function () {
 		showTab("OurApproach"); // Default to "Our Approach" tab if no query parameter is specified
 	}
 });
+
+// --- Elements
+const container = document.querySelector(".card_container");
+const cards = Array.from(document.querySelectorAll(".services_card"));
+const dotsWrap = document.querySelector(".dots");
+
+// Guard: bail if essentials are missing
+if (!container || cards.length === 0) {
+	console.warn("Card container or cards not found.");
+} else {
+	// --- Helpers
+	// const setHeightTo = (el) => {
+	// 	if (!el) return;
+	// 	container.style.height = el.scrollHeight + "px";
+	// };
+
+	const setActive = (idx) => {
+		dots.forEach((d, i) => d.setAttribute("aria-current", String(i === idx)));
+	};
+
+	const clampIndex = (i) => Math.min(Math.max(i, 0), cards.length - 1);
+
+	const goTo = (idx) => {
+		idx = clampIndex(idx);
+		const left = cards[idx].offsetLeft;
+		container.scrollTo({ left, behavior: "smooth" });
+		setActive(idx);
+	};
+
+	// --- Dots
+	const dots = [];
+	if (dotsWrap) {
+		cards.forEach((_, i) => {
+			const btn = document.createElement("button");
+			btn.className = "dot";
+			btn.setAttribute("role", "tab");
+			btn.setAttribute("aria-label", `Go to card ${i + 1}`);
+			btn.addEventListener("click", () => goTo(i));
+			dotsWrap.appendChild(btn);
+			dots.push(btn);
+		});
+	}
+
+	// --- IntersectionObserver: track most-visible card
+	const io = new IntersectionObserver(
+		(entries) => {
+			const visible = entries
+				.filter((e) => e.isIntersecting)
+				.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+			if (!visible) return;
+
+			const idx = cards.indexOf(visible.target);
+			setActive(idx);
+		},
+		{
+			root: container,
+			threshold: [0.5, 0.75, 0.9],
+		}
+	);
+	cards.forEach((card) => io.observe(card));
+
+	// --- Init on load
+	window.addEventListener("load", () => {
+		if (dots.length) setActive(0);
+	});
+
+	// --- Resize: keep height aligned to current card
+	let resizeRaf = null;
+	window.addEventListener("resize", () => {
+		if (resizeRaf) return;
+		resizeRaf = requestAnimationFrame(() => {
+			resizeRaf = null;
+			const idx = clampIndex(
+				Math.round(container.scrollLeft / container.clientWidth)
+			);
+			setActive(idx);
+		});
+	});
+
+	// --- Keyboard navigation
+	container.setAttribute("tabindex", "0");
+	container.addEventListener("keydown", (e) => {
+		if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+		const current = dots.findIndex(
+			(d) => d.getAttribute("aria-current") === "true"
+		);
+		const fallbackIdx = clampIndex(
+			Math.round(container.scrollLeft / container.clientWidth)
+		);
+		const activeIdx = current >= 0 ? current : fallbackIdx;
+		const next = e.key === "ArrowRight" ? activeIdx + 1 : activeIdx - 1;
+		goTo(next);
+	});
+}
+
+const inner = document.getElementById("cardInner");
+const btn = document.getElementById("contactBtn");
+const backBtn = document.getElementById("backBtn");
+
+const flip = (toBack = true) => {
+	inner.classList.toggle("is-flipped", toBack);
+	btn?.setAttribute("aria-expanded", String(toBack));
+	// Toggle aria-hidden on faces for accessibility
+	inner.querySelector(".front")?.setAttribute("aria-hidden", String(toBack));
+	inner.querySelector(".back")?.setAttribute("aria-hidden", String(!toBack));
+};
+
+btn?.addEventListener("click", () => flip(true));
+btn?.addEventListener("keydown", (e) => {
+	if (e.key === "Enter" || e.key === " ") {
+		e.preventDefault();
+		flip(true);
+	}
+});
+
+// click anywhere on the back to flip back
+inner.querySelector(".back")?.addEventListener("click", (e) => {
+	// ignore clicks on links/buttons
+	const tag = e.target.closest("a,button")?.tagName;
+	if (!tag) flip(false);
+});
+backBtn?.addEventListener("click", (e) => {
+	e.stopPropagation();
+	flip(false);
+});

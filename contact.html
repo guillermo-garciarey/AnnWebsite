@@ -109,71 +109,91 @@
 						</p>
 					</header>
 				</div>
-
-				<div class="inner narrow">
-					<form
-						method="post"
-						action="#"
-						class="alt"
+				<!-- FLIP CARD -->
+				<div
+					class="flip-card"
+					aria-label="Contact card"
+				>
+					<div
+						class="flip-card-inner"
+						id="cardInner"
+						aria-live="polite"
 					>
-						<div class="row gtr-uniform">
-							<div class="col-6 col-12-xsmall">
-								<input
-									type="text"
-									name="demo-name"
-									id="demo-name"
-									value=""
-									placeholder="Name"
+						<!-- FRONT -->
+						<div class="flip-card-face front">
+							<div class="avatar-wrap">
+								<img
+									src="images/AnnJordan.jpg"
+									alt="Profile photo"
+									class="avatar"
 								/>
 							</div>
-							<div class="col-6 col-12-xsmall">
-								<input
-									type="email"
-									name="demo-email"
-									id="demo-email"
-									value=""
-									placeholder="Email"
-								/>
-							</div>
-							<!-- Break -->
-							<div class="col-12">
-								<select
-									name="demo-category"
-									id="demo-category"
+
+							<div class="front-content">
+								<h3 class="name">Ann Jordan</h3>
+								<!-- <p class="role">Ballroom Coach & Judge</p> -->
+
+								<button
+									class="contact-btn"
+									id="contactBtn"
+									aria-controls="cardInner"
+									aria-expanded="false"
 								>
-									<option value="">Select Therapist</option>
-									<option value="1">All</option>
-									<option value="1">Ann Jordan</option>
-									<option value="1">Mary Coleman</option>
-									<option value="1">Mary Mallone</option>
-									<option value="1">Marie Scully</option>
-								</select>
-							</div>
-
-							<!-- Break -->
-
-							<!-- Break -->
-							<div class="col-12">
-								<textarea
-									name="demo-message"
-									id="demo-message"
-									placeholder="Enter your message"
-									rows="6"
-								></textarea>
-							</div>
-							<!-- Break -->
-							<div class="col-12">
-								<ul class="actions">
-									<li>
-										<input
-											type="submit"
-											value="Send Message"
-										/>
-									</li>
-								</ul>
+									<i
+										class="fa-solid fa-address-card"
+										aria-hidden="true"
+									></i>
+									Contact
+								</button>
 							</div>
 						</div>
-					</form>
+
+						<!-- BACK -->
+						<div
+							class="flip-card-face back"
+							aria-hidden="true"
+						>
+							<div class="back-header">
+								<span
+									class="back-chip"
+									id="backBtn"
+								>
+									<i
+										class="fa-solid fa-rotate-left"
+										aria-hidden="true"
+									></i>
+									Back
+								</span>
+							</div>
+
+							<div class="actions">
+								<a
+									class="icon-btn"
+									href="tel:+3531234567"
+									aria-label="Call"
+								>
+									<i class="fa-solid fa-phone"></i>
+									<span>Call</span>
+								</a>
+								<a
+									class="icon-btn"
+									href="mailto:hello@example.com"
+									aria-label="Email"
+								>
+									<i class="fa-solid fa-envelope"></i>
+									<span>Email</span>
+								</a>
+								<a
+									class="icon-btn"
+									href="sms:+3531234567"
+									aria-label="SMS"
+								>
+									<i class="fa-solid fa-message"></i>
+									<span>SMS</span>
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 

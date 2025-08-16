@@ -220,7 +220,7 @@ html {
 
 body {
 	/* background-color: #3f3f3f !important; */
-	background-color: #feba17 !important;
+	background-color: var(--footer-color) !important;
 }
 
 body.is-preload *,

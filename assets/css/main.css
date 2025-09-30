@@ -6029,3 +6029,34 @@ blockquote {
 		height: 80px;
 	}
 }
+
+.chev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  font-size: 22px;
+  line-height: 42px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.chev--left { left: 8px; }
+.chev--right { right: 8px; }
+
+.chev[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.chev i {
+  font-size: 20px;
+  pointer-events: none; /* so clicks hit the button, not the icon */
+}

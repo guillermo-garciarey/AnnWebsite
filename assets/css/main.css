@@ -19,8 +19,16 @@
 	--accent-2: var(--secondary-yellow); /* secondary yellow */
 	--muted: #555555; /* softer gray for subtext */
 	--ring: rgba(0, 0, 0, 0.25); /* focus ring darkened */
-	--babybluebackground: #ADD8E6;
-	--babyblueborder: #87CEEB;
+	--babybluebackground: #add8e6;
+	--babyblueborder: #87ceeb;
+
+	--bg: #ffffff;
+	--hover-bg: #f5f5f5;
+	--ring: #3b82f6; /* focus ring */
+	--cyan: #06b6d4;
+	--blue: #60a5fa;
+	--yellow: #facc14;
+	--orange: #fb923c;
 }
 
 p {
@@ -270,8 +278,6 @@ html {
 		font-size: 10.5pt;
 	}
 }
-
-
 
 body {
 	background-color: #ffffff;
@@ -5229,7 +5235,7 @@ blockquote {
 	border-radius: 4px;
 	padding: 15px;
 	cursor: pointer;
-	margin-bottom: 30px !important; 
+	margin-bottom: 30px !important;
 	flex: 1;
 }
 .resourcesbutton h4 {
@@ -5449,7 +5455,7 @@ blockquote {
 
 .team-container {
 	display: flex;
-margin-block: 50px;
+	margin-block: 50px;
 	justify-content: center;
 	gap: 2rem;
 	width: 100%;
@@ -6010,7 +6016,7 @@ blockquote {
 }
 .icon-btn i {
 	font-size: 1.4rem;
-	color: #222;
+	color: var(--main-yellow);
 }
 .icon-btn span {
 	font-size: 0.8rem;
@@ -6039,38 +6045,138 @@ blockquote {
 }
 
 .chev-wrapper {
-  display: flex;
-  justify-content: center;  /* center horizontally */
-  align-items: center;      /* center vertically if wrapper has height */
-  gap: 1rem;                /* space between the two buttons */
-  margin-block: 10px;       /* space above/below the whole group */
+	display: flex;
+	justify-content: center; /* center horizontally */
+	align-items: center; /* center vertically if wrapper has height */
+	gap: 1rem; /* space between the two buttons */
+	margin-block: 10px; /* space above/below the whole group */
 }
 
 .chev {
-  margin-block: 10px;
-  top: 50%;
-  
-  z-index: 5;
-  
-  border: none;
-  
-  font-size: 22px;
-  line-height: 42px;
-  text-align: center;
-  cursor: pointer;
-  user-select: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+	margin-block: 10px;
+	top: 50%;
+
+	z-index: 5;
+
+	border: none;
+
+	font-size: 22px;
+	line-height: 42px;
+	text-align: center;
+	cursor: pointer;
+	user-select: none;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
-.chev--left { left: 8px; }
-.chev--right { right: 8px; }
+.chev--left {
+	left: 8px;
+}
+.chev--right {
+	right: 8px;
+}
 
 .chev[disabled] {
-  opacity: 0.4;
-  cursor: not-allowed;
-  pointer-events: none;
+	opacity: 0.4;
+	cursor: not-allowed;
+	pointer-events: none;
 }
 
 .chev i {
-  font-size: 20px;
-  pointer-events: none; /* so clicks hit the button, not the icon */
+	font-size: 20px;
+	pointer-events: none; /* so clicks hit the button, not the icon */
 }
+
+/* TESTING */
+
+/* Layout */
+.toolbar {
+	display: flex;
+	align-items: center;
+	gap: 8px; /* gap-2 */
+	padding: 12px;
+	background: #f9fafb;
+}
+
+/* Button base */
+.btn {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	height: 36px; /* h-9 */
+	padding: 0 12px; /* px-3 */
+	border-radius: 6px; /* rounded-md */
+	background: var(--bg);
+	color: inherit;
+	font: 500 0.875rem/1.2 system-ui, -apple-system, "Segoe UI", Roboto, Inter,
+		Arial, sans-serif; /* text-sm, medium */
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+.btn:hover {
+	background: var(--hover-bg);
+}
+.btn:disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* Focus ring (focus-visible) */
+.btn:focus-visible {
+	outline: 2px solid var(--ring);
+	outline-offset: 2px; /* ring-offset-2 */
+}
+
+/* Icon sizes (lucide SVG) */
+.icon {
+	width: 22px;
+	height: 22px;
+	stroke: currentColor;
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	flex: 0 0 auto;
+}
+
+/* Hover color accents per button (text only — icons inherit) */
+.btn--dash:hover {
+	color: var(--cyan);
+}
+.btn--articles:hover {
+	color: var(--blue);
+}
+.btn--notes:hover {
+	color: var(--yellow);
+}
+.btn--reviews:hover {
+	color: var(--orange);
+}
+
+/* Back button label reveal (like group-hover:scale-100) */
+.btn--back .label {
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 0.18s ease;
+	white-space: nowrap;
+}
+.btn--back:hover .label {
+	transform: scaleX(1);
+}
+
+/* Optional: darker text in dark backgrounds */
+@media (prefers-color-scheme: dark) {
+	.toolbar {
+		background: #0b0f19;
+	}
+	.btn {
+		background: #111827;
+		color: #e5e7eb;
+	}
+	.btn:hover {
+		background: #1f2937;
+	}
+}
+
+/* TESTING */

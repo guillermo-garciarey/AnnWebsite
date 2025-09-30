@@ -6038,14 +6038,20 @@ blockquote {
 	}
 }
 
+.chev-wrapper {
+  display: flex;
+  justify-content: center;  /* center horizontally */
+  align-items: center;      /* center vertically if wrapper has height */
+  gap: 1rem;                /* space between the two buttons */
+  margin-block: 10px;       /* space above/below the whole group */
+}
+
 .chev {
-  position: absolute;
+  margin-block: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  
   z-index: 5;
-  /* width: 42px;
-  height: 42px; */
-  border-radius: 50%;
+  
   border: none;
   
   font-size: 22px;

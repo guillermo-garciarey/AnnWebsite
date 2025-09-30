@@ -397,5 +397,19 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[data-target]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault(); // stop following the href
+
+      const target = link.getAttribute('data-target');
+      const img = document.querySelector(`.team-member img[data-target="${target}"]`);
+      
+      if (img) {
+        img.click(); // simulate the click
+      }
+    });
+  });
+});
 
 

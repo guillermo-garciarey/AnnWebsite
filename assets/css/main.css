@@ -271,6 +271,12 @@ html {
 	}
 }
 
+@media screen and (min-width: 1200px) {
+	services_card {
+		height: 800px;
+	}
+}
+
 body {
 	background-color: #ffffff;
 	color: #3f3f3f;

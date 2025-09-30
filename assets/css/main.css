@@ -6041,11 +6041,11 @@ blockquote {
   top: 50%;
   transform: translateY(-50%);
   z-index: 5;
-  width: 42px;
-  height: 42px;
+  /* width: 42px;
+  height: 42px; */
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.9);
+  
   font-size: 22px;
   line-height: 42px;
   text-align: center;

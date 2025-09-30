@@ -271,11 +271,7 @@ html {
 	}
 }
 
-@media screen and (min-width: 1200px) {
-	.services_card {
-		height: 800px;
-	}
-}
+
 
 body {
 	background-color: #ffffff;
@@ -5809,6 +5805,12 @@ blockquote {
 .services_card:nth-child(3) {
 	background-color: var(--babyblueborder); /* example color */
 	border-color: var(--babybluebackground);
+}
+
+@media screen and (min-width: 1200px) {
+	.services_card {
+		height: 800px;
+	}
 }
 
 .dots {

@@ -2371,7 +2371,7 @@ input[type="reset"],
 input[type="button"],
 button,
 .button {
-	background-color: var(--green1);
+	background-color: var(--main-yellow);
 	color: #ffffff !important;
 }
 

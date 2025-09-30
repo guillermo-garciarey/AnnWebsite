@@ -5449,7 +5449,7 @@ blockquote {
 
 .team-container {
 	display: flex;
-
+margin-block: 50px;
 	justify-content: center;
 	gap: 2rem;
 	width: 100%;

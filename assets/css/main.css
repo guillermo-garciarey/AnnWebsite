@@ -5793,7 +5793,7 @@ blockquote {
 	border: solid 1px var(--main-yellow);
 	border-radius: 10px;
 	padding: 1rem;
-	height: 400px;
+	height: 600px;
 	overflow: scroll;
 }
 

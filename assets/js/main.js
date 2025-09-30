@@ -398,18 +398,16 @@ document.addEventListener("keydown", (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('a[data-target]').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault(); // stop following the href
+  // Get hash from the URL, e.g. #modalAnn
+  const target = window.location.hash;
+  if (!target) return;
 
-      const target = link.getAttribute('data-target');
-      const img = document.querySelector(`.team-member img[data-target="${target}"]`);
-      
-      if (img) {
-        img.click(); // simulate the click
-      }
-    });
-  });
+  // Find the matching image that would normally open the modal
+  const img = document.querySelector(`.team-member img[data-target="${target}"]`);
+  
+  if (img) {
+    img.click(); // simulate the click to open modal
+  }
 });
 
 

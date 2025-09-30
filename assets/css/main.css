@@ -272,7 +272,7 @@ html {
 }
 
 @media screen and (min-width: 1200px) {
-	services_card {
+	.services_card {
 		height: 800px;
 	}
 }

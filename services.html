@@ -92,6 +92,13 @@
 					/>
 				</div>
 				<div class="inner style2">
+					<button class="chev chev--left" aria-label="Previous" type="button">
+  <i class="fas fa-chevron-left"></i>
+</button>
+
+<button class="chev chev--right" aria-label="Next" type="button">
+  <i class="fas fa-chevron-right"></i>
+</button>
 					<div class="card_container">
 						<div class="services_card">
 							<h4 id="ourapproachbit">Our Approach</h4>
@@ -634,7 +641,50 @@ and release of emotion.
 				}
 			};
 		</script>
+		<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.card_container');
+  const btnPrev = document.querySelector('.chev--left');
+  const btnNext = document.querySelector('.chev--right');
+
+  if (!container || !btnPrev || !btnNext) return;
+
+  const cardWidth = container.querySelector('.services_card').offsetWidth;
+  const gap = parseInt(getComputedStyle(container).gap || 0, 10);
+  let scrollAmount = cardWidth + gap;
+
+  function updateButtons() {
+    btnPrev.disabled = container.scrollLeft <= 0;
+    btnNext.disabled = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
+  }
+
+  btnPrev.addEventListener('click', () => {
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    setTimeout(updateButtons, 400);
+  });
+
+  btnNext.addEventListener('click', () => {
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    setTimeout(updateButtons, 400);
+  });
+
+  // Update on resize & scroll
+  window.addEventListener('resize', () => {
+    const w = container.querySelector('.services_card').offsetWidth;
+    const g = parseInt(getComputedStyle(container).gap || 0, 10);
+    scrollAmount = w + g;
+    updateButtons();
+  });
+
+  container.addEventListener('scroll', updateButtons);
+
+  // Initial state
+  updateButtons();
+});
+</script>
+
 	</body>
 </html>
+
 
 

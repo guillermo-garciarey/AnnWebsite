@@ -19,6 +19,8 @@
 	--accent-2: var(--secondary-yellow); /* secondary yellow */
 	--muted: #555555; /* softer gray for subtext */
 	--ring: rgba(0, 0, 0, 0.25); /* focus ring darkened */
+	--babybluebackground: #ADD8E6;
+	--babyblueborder: #87CEEB;
 }
 
 p {
@@ -5799,7 +5801,8 @@ blockquote {
 }
 
 .services_card:nth-child(3) {
-	border-color: var(--main-yellow);
+	background-color: var(--babyblueborder); /* example color */
+	border-color: var(--babybluebackground);
 }
 
 .dots {

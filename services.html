@@ -67,13 +67,13 @@
 
 							<ul>
 								<li>
-									<a href="services.html#ourapproachbit">Our Approach</a>
+									<a href="services.html?card=ourapproachbit">Our Approach</a>
 								</li>
 								<li>
-									<a href="services.html#issuesbit">Issues We Work With</a>
+									<a href="services.html?card=issuesbit">Issues We Work With</a>
 								</li>
 								<li>
-									<a href="services.html#typesbit">Types Of Therapy</a>
+									<a href="services.html?card=typesbit">Types Of Therapy</a>
 								</li>
 							</ul>
 						</li>
@@ -96,8 +96,11 @@
 				</div>
 				<div class="inner style2">
 					<div class="card_container">
-						<div class="services_card">
-							<h4 id="ourapproachbit">Our Approach</h4>
+						<div
+							class="services_card"
+							id="ourapproachbit"
+						>
+							<h4>Our Approach</h4>
 
 							<p>
 								Having someone to deeply listen to you, where you can explore
@@ -138,8 +141,11 @@
 								<li>Find true meaning and purpose</li>
 							</ul>
 						</div>
-						<div class="services_card">
-							<h4 id="issuesbit">Issues We Work With</h4>
+						<div
+							class="services_card"
+							id="issuesbit"
+						>
+							<h4>Issues We Work With</h4>
 
 							<p>
 								We offer both in-depth relational therapy or short-term focused
@@ -193,8 +199,11 @@
 								<li>Suicidal thought and self-harm</li>
 							</ul>
 						</div>
-						<div class="services_card">
-							<h4 id="typesbit">Types Of Therapy</h4>
+						<div
+							class="services_card"
+							id="typesbit"
+						>
+							<h4>Types Of Therapy</h4>
 
 							<p>
 								At Therapy Journey Ireland, our therapist’s work at a deeper
@@ -256,11 +265,11 @@
 								<dt>Bodywork Therapy</dt>
 								<dd>
 									Bodywork involves working in some form with the human body.
-									This can include various touch work techniques, breath work,
-									energy work, observation of posture, gestures, expressions and
-									movements. This type of therapy is used to promote awareness,
-									to build the body-mind connection and for expression and
-									release of emotion.
+									This can include various techniques, breath work, energy work,
+									observation of posture, gestures, expressions and movements.
+									This type of therapy is used to promote awareness, to build
+									the body-mind connection and for expression and release of
+									emotion.
 								</dd>
 							</dl>
 						</div>
@@ -401,6 +410,20 @@
 
 				// Initial state
 				updateButtons();
+			});
+		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const params = new URLSearchParams(window.location.search);
+				const cardId = params.get("card");
+				if (!cardId) return;
+
+				const card = document.getElementById(cardId);
+				if (!card) return;
+
+				// Add a class so you can style it as "opened" / "active"
+				card.classList.add("is-active");
 			});
 		</script>
 	</body>

@@ -148,68 +148,6 @@ function updateCarousel() {
 	});
 }
 
-// Optional: swipe support
-//
-
-// Wait for the DOM to be loaded
-
-// This function shows the correct tab based on the tab ID
-// function showTab(tab) {
-// 	console.log("Tab function called for: ", tab);
-// 	document
-// 		.querySelectorAll(".tab-panel")
-// 		.forEach((panel) => panel.classList.remove("active"));
-// 	document
-// 		.querySelectorAll(".tab-button")
-// 		.forEach((button) => button.classList.remove("active"));
-
-// 	const tabPanel = document.getElementById(tab);
-// 	if (tabPanel) {
-// 		tabPanel.classList.add("active");
-// 	}
-
-// 	const tabButton = document.querySelector(`[onclick="showTab('${tab}')"]`);
-// 	if (tabButton) {
-// 		tabButton.classList.add("active");
-// 	}
-// }
-
-// const urlParams = new URLSearchParams(window.location.search);
-// const tab = urlParams.get("tab");
-// if (tab) {
-// 	showTab(tab);
-// } else {
-// 	showTab("OurApproach");
-// }
-
-function showTab(tab) {
-	console.log("showTab function called with tab: ", tab); // Debugging log for the tab parameter
-	// Remove active class from all panels and buttons
-	document
-		.querySelectorAll(".tab-panel")
-		.forEach((panel) => panel.classList.remove("active"));
-	document
-		.querySelectorAll(".tab-button")
-		.forEach((button) => button.classList.remove("active"));
-
-	// Add active class to the selected tab panel and button
-	const tabPanel = document.getElementById(tab);
-	if (tabPanel) {
-		console.log(`Displaying tab: ${tab}`); // Debugging log when a tab is displayed
-		tabPanel.classList.add("active");
-	} else {
-		console.error(`No tab found with id: ${tab}`); // Debugging log if tab not found
-	}
-
-	const tabButton = document.querySelector(`[onclick="showTab('${tab}')"]`);
-	if (tabButton) {
-		console.log(`Activating button for tab: ${tab}`); // Debugging log when button is activated
-		tabButton.classList.add("active");
-	} else {
-		console.error(`No button found for tab: ${tab}`); // Debugging log if button not found
-	}
-}
-
 document.addEventListener("DOMContentLoaded", function () {
 	// Check the URL for the 'tab' query parameter and display the tab
 	const urlParams = new URLSearchParams(window.location.search);
@@ -321,93 +259,107 @@ if (!container || cards.length === 0) {
 
 // Multi-card flip handler
 document.querySelectorAll(".flip-card").forEach((card, idx) => {
-  const inner = card.querySelector(".flip-card-inner");
-  const btn = card.querySelector(".contact-btn");
-  const backFace = card.querySelector(".flip-card-face.back");
-  const frontFace = card.querySelector(".flip-card-face.front");
-  const backBtn = card.querySelector(".back-btn");
+	const inner = card.querySelector(".flip-card-inner");
+	const btn = card.querySelector(".contact-btn");
+	const backFace = card.querySelector(".flip-card-face.back");
+	const frontFace = card.querySelector(".flip-card-face.front");
+	const backBtn = card.querySelector(".back-btn");
 
-  // Ensure a unique ID for aria-controls
-  if (inner) {
-    const uniqueId = inner.id || `cardInner-${idx + 1}`;
-    inner.id = uniqueId;
-    btn?.setAttribute("aria-controls", uniqueId);
-  }
+	// Ensure a unique ID for aria-controls
+	if (inner) {
+		const uniqueId = inner.id || `cardInner-${idx + 1}`;
+		inner.id = uniqueId;
+		btn?.setAttribute("aria-controls", uniqueId);
+	}
 
-  const setAria = (toBack) => {
-    btn?.setAttribute("aria-expanded", String(toBack));
-    frontFace?.setAttribute("aria-hidden", String(toBack));
-    backFace?.setAttribute("aria-hidden", String(!toBack));
-  };
+	const setAria = (toBack) => {
+		btn?.setAttribute("aria-expanded", String(toBack));
+		frontFace?.setAttribute("aria-hidden", String(toBack));
+		backFace?.setAttribute("aria-hidden", String(!toBack));
+	};
 
-  const flip = (toBack = true) => {
-    inner?.classList.toggle("is-flipped", toBack);
-    setAria(toBack);
-  };
+	const flip = (toBack = true) => {
+		inner?.classList.toggle("is-flipped", toBack);
+		setAria(toBack);
+	};
 
-  // Optionally close other open cards when opening this one
-  const closeOthers = () => {
-    document.querySelectorAll(".flip-card-inner.is-flipped").forEach((el) => {
-      if (el !== inner) {
-        el.classList.remove("is-flipped");
-        const host = el.closest(".flip-card");
-        host?.querySelector(".contact-btn")?.setAttribute("aria-expanded", "false");
-        host?.querySelector(".flip-card-face.front")?.setAttribute("aria-hidden", "false");
-        host?.querySelector(".flip-card-face.back")?.setAttribute("aria-hidden", "true");
-      }
-    });
-  };
+	// Optionally close other open cards when opening this one
+	const closeOthers = () => {
+		document.querySelectorAll(".flip-card-inner.is-flipped").forEach((el) => {
+			if (el !== inner) {
+				el.classList.remove("is-flipped");
+				const host = el.closest(".flip-card");
+				host
+					?.querySelector(".contact-btn")
+					?.setAttribute("aria-expanded", "false");
+				host
+					?.querySelector(".flip-card-face.front")
+					?.setAttribute("aria-hidden", "false");
+				host
+					?.querySelector(".flip-card-face.back")
+					?.setAttribute("aria-hidden", "true");
+			}
+		});
+	};
 
-  // Open (front → back)
-  btn?.addEventListener("click", () => {
-    closeOthers();
-    flip(true);
-  });
-  btn?.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      closeOthers();
-      flip(true);
-    }
-  });
+	// Open (front → back)
+	btn?.addEventListener("click", () => {
+		closeOthers();
+		flip(true);
+	});
+	btn?.addEventListener("keydown", (e) => {
+		if (e.key === "Enter" || e.key === " ") {
+			e.preventDefault();
+			closeOthers();
+			flip(true);
+		}
+	});
 
-  // Click anywhere on the back to flip back, but ignore clicks on links/buttons
-  backFace?.addEventListener("click", (e) => {
-    const actionable = e.target.closest("a, button, [role='button'], input, select, textarea, label");
-    if (!actionable) flip(false);
-  });
+	// Click anywhere on the back to flip back, but ignore clicks on links/buttons
+	backFace?.addEventListener("click", (e) => {
+		const actionable = e.target.closest(
+			"a, button, [role='button'], input, select, textarea, label"
+		);
+		if (!actionable) flip(false);
+	});
 
-  // Explicit back chip/button
-  backBtn?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    flip(false);
-  });
+	// Explicit back chip/button
+	backBtn?.addEventListener("click", (e) => {
+		e.stopPropagation();
+		flip(false);
+	});
 });
 
 // Global escape to close all
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    document.querySelectorAll(".flip-card-inner.is-flipped").forEach((el) => {
-      el.classList.remove("is-flipped");
-      const host = el.closest(".flip-card");
-      host?.querySelector(".contact-btn")?.setAttribute("aria-expanded", "false");
-      host?.querySelector(".flip-card-face.front")?.setAttribute("aria-hidden", "false");
-      host?.querySelector(".flip-card-face.back")?.setAttribute("aria-hidden", "true");
-    });
-  }
+	if (e.key === "Escape") {
+		document.querySelectorAll(".flip-card-inner.is-flipped").forEach((el) => {
+			el.classList.remove("is-flipped");
+			const host = el.closest(".flip-card");
+			host
+				?.querySelector(".contact-btn")
+				?.setAttribute("aria-expanded", "false");
+			host
+				?.querySelector(".flip-card-face.front")
+				?.setAttribute("aria-hidden", "false");
+			host
+				?.querySelector(".flip-card-face.back")
+				?.setAttribute("aria-hidden", "true");
+		});
+	}
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Get hash from the URL, e.g. #modalAnn
-  const target = window.location.hash;
-  if (!target) return;
+document.addEventListener("DOMContentLoaded", () => {
+	// Get hash from the URL, e.g. #modalAnn
+	const target = window.location.hash;
+	if (!target) return;
 
-  // Find the matching image that would normally open the modal
-  const img = document.querySelector(`.team-member img[data-target="${target}"]`);
-  
-  if (img) {
-    img.click(); // simulate the click to open modal
-  }
+	// Find the matching image that would normally open the modal
+	const img = document.querySelector(
+		`.team-member img[data-target="${target}"]`
+	);
+
+	if (img) {
+		img.click(); // simulate the click to open modal
+	}
 });
-
-

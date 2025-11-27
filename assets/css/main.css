@@ -6185,3 +6185,7 @@ blockquote {
 }
 
 /* TESTING */
+
+.smalltext {
+	font-size: 1.1rem !important;
+}

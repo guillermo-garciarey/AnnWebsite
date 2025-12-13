@@ -5187,7 +5187,7 @@ blockquote {
 	justify-content: center; /* Centers children horizontally */
 	align-items: center; /* Centers children vertically */
 	width: 350px;
-	justify-self: center;
+	justify-self: center !important;
 }
 
 @media screen and (max-width: 820px) {

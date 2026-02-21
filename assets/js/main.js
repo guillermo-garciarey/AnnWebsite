@@ -157,9 +157,30 @@ document.addEventListener("DOMContentLoaded", function () {
 		return;
 	}
 
+	const resourcesBox = document.querySelector(".resourcesbox");
+
+	function updateResourcesVisibility() {
+		if (!resourcesBox) return;
+
+		const isLast = currentIndex === slides.length - 1;
+
+		// Show ONLY on last slide
+		resourcesBox.classList.toggle("is-hidden", !isLast);
+	}
+
 	const prevBtn = document.querySelector(".chev--left");
 	const nextBtn = document.querySelector(".chev--right");
 	let currentIndex = 0;
+
+	function updateChevrons() {
+		// If you want wrap-around, don't hide anything.
+		// But since you want first=right only, last=left only, we treat it as non-circular nav.
+		if (prevBtn)
+			prevBtn.style.display = currentIndex === 0 ? "none" : "inline-block";
+		if (nextBtn)
+			nextBtn.style.display =
+				currentIndex === slides.length - 1 ? "none" : "inline-block";
+	}
 
 	function scrollToPageTop() {
 		// Force scroll to the absolute top
@@ -169,14 +190,18 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function showSlide(index) {
-		if (index < 0) index = slides.length - 1;
-		if (index >= slides.length) index = 0;
+		// clamp instead of wrap
+		if (index < 0) index = 0;
+		if (index >= slides.length) index = slides.length - 1;
 
 		slides.forEach((slide, i) => {
 			slide.classList.toggle("tab_active", i === index);
 		});
 
 		currentIndex = index;
+
+		updateChevrons();
+		updateResourcesVisibility();
 		scrollToPageTop();
 	}
 

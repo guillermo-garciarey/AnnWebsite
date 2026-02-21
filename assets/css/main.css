@@ -4448,7 +4448,7 @@ body {
 	background-repeat: no-repeat;
 	height: 70vh !important;
 	height: 100vh !important;
-	padding: 2rem 0 8rem 0;
+	padding: 2rem 0 2rem 0;
 	overflow: hidden;
 	position: relative;
 }
@@ -4644,7 +4644,7 @@ body.is-preload #banner:before {
 
 @media screen and (max-width: 480px) {
 	#banner {
-		padding: 4rem 0;
+		padding: 4rem 0 1rem 0;
 		min-height: 0;
 		padding-top: 8rem;
 	}
@@ -5184,8 +5184,8 @@ blockquote {
 
 .resourcesbox {
 	display: flex;
-	justify-content: center; /* Centers children horizontally */
-	align-items: center; /* Centers children vertically */
+	justify-content: center !important; /* Centers children horizontally */
+	align-items: center !important; /* Centers children vertically */
 	width: 350px;
 	justify-self: center !important;
 }
@@ -5421,6 +5421,8 @@ blockquote {
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%;
+	height: 80vh;
+	overflow: auto;
 	transform: translateY(100%); /* Initially place it below the screen */
 	animation: slideIn 0.5s ease-out forwards; /* Animation to slide it in */
 }
@@ -5800,8 +5802,8 @@ blockquote {
 	flex: 0 0 100%; /* full width per card */
 	scroll-snap-align: start;
 	scroll-snap-stop: always; /* optional: stronger snapping */
-	background-color: var(--secondary-yellow);
-	border: solid 1px var(--main-yellow);
+	background-color: var(--green2);
+	border: solid 1px var(--green2);
 	border-radius: 10px;
 	padding: 1rem;
 	height: 600px;
@@ -5814,8 +5816,8 @@ blockquote {
 }
 
 .services_card:nth-child(3) {
-	background-color: var(--babyblueborder); /* example color */
-	border-color: var(--babybluebackground);
+	background-color: var(--green2); /* example color */
+	border-color: var(--green2);
 }
 
 @media screen and (min-width: 1200px) {
@@ -6209,7 +6211,7 @@ blockquote {
 	padding: 1.5rem;
 	border: 1px solid #ccc;
 	border-radius: 8px;
-	background: #fff;
+
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
@@ -6292,4 +6294,20 @@ blockquote {
 	width: auto !important;
 	height: auto !important;
 	aspect-ratio: auto !important;
+}
+
+.card_container_contact {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+@media screen and (max-width: 480px) {
+	.card_container_contact {
+		flex-direction: column;
+	}
+}
+
+.is-hidden {
+	display: none !important;
 }

@@ -105,7 +105,7 @@
 			$("#nav").navList() +
 			"</nav>" +
 			'<a href="#navPanel" class="close"></a>' +
-			"</div>"
+			"</div>",
 	)
 		.appendTo($body)
 		.panel({
@@ -314,7 +314,7 @@ document.querySelectorAll(".flip-card").forEach((card, idx) => {
 	// Click anywhere on the back to flip back, but ignore clicks on links/buttons
 	backFace?.addEventListener("click", (e) => {
 		const actionable = e.target.closest(
-			"a, button, [role='button'], input, select, textarea, label"
+			"a, button, [role='button'], input, select, textarea, label",
 		);
 		if (!actionable) flip(false);
 	});
@@ -352,10 +352,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Find the matching image that would normally open the modal
 	const img = document.querySelector(
-		`.team-member img[data-target="${target}"]`
+		`.team-member img[data-target="${target}"]`,
 	);
 
 	if (img) {
 		img.click(); // simulate the click to open modal
+	}
+});
+
+const contactLinks = document.querySelectorAll(".contact-link");
+const modal = document.getElementById("phoneModal");
+const closeBtn = document.querySelector(".close-btncall");
+
+const modalTitle = document.querySelector(".modal-contentcall h3");
+const modalNumber = document.querySelector(".modal-contentcall p");
+
+function isMobile() {
+	return window.matchMedia("(max-width: 768px)").matches;
+}
+
+contactLinks.forEach((link) => {
+	link.addEventListener("click", function (e) {
+		// let mobile behave normally
+		if (isMobile()) return;
+
+		const href = this.getAttribute("href");
+		if (!href) return;
+
+		if (href.startsWith("tel:") || href.startsWith("sms:")) {
+			e.preventDefault();
+
+			const number = href.replace("tel:", "").replace("sms:", "");
+			const name = this.dataset.name || "";
+
+			modalNumber.textContent = number;
+
+			if (href.startsWith("sms:")) {
+				modalTitle.textContent = name ? `Text ${name}:` : "Text this number:";
+			} else {
+				modalTitle.textContent = name ? `Call ${name}:` : "Call this number:";
+			}
+
+			modal.style.display = "flex";
+		}
+	});
+});
+
+// close button
+closeBtn.addEventListener("click", () => {
+	modal.style.display = "none";
+});
+
+// click outside
+modal.addEventListener("click", (e) => {
+	if (e.target === modal) {
+		modal.style.display = "none";
+	}
+});
+
+// escape key
+document.addEventListener("keydown", (e) => {
+	if (e.key === "Escape") {
+		modal.style.display = "none";
 	}
 });
